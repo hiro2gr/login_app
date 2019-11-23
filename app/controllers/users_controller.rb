@@ -1,19 +1,20 @@
+# ユーザー登録用
 class UsersController < ApplicationController
- 
-
+  
   def login_form
 
   end
 
-  def Login
+  def login
+    
     @user = User.find_by(
       email: params[:email], 
       password: params[:password]
     )
     if @user
-      session[:user_id] = @user.id
+      session[:user_id] = user.id
       flash[:notice] = "ログインしました"
-      redirect_to("/index")
+      redirect_to("index")
     else
       render("users/login_form")
     end
@@ -22,21 +23,4 @@ class UsersController < ApplicationController
   def signup
     
   end
-
-  def create 
-    @user = User.new(
-      name: params[:name], 
-      email: params[:email], 
-      password: params[:password]
-    )
-    @user.save
-    redirect_to("/")
-  end
-
-  def index
-    @user = User.find_by(id: params[:id])
-
-  end
-
-
 end

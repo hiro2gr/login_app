@@ -1,6 +1,8 @@
-<%= form_tag("/create") do%>
-    <h1>新規登録</h1>
+<h1>新規登録</h1>
 
+<%= link_to "ログインはこちら", "login_form" %>
+
+<%= form_tag("/create") do%>
     <p>ユーザー名</p>
     <input name= "name">
     
